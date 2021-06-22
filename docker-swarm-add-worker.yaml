@@ -1,0 +1,10 @@
+ ---
+- name: "add worker to swarm"
+  docker_swarm:
+    state: join
+    advertise_addr: worker-address
+    join_token: "{{ hostvars['manager-address']['swarm_info']['swarm_facts']['JoinTokens']['Worker'] }}"
+    remote_addrs: [ 'manager-addressr:2377' ]
+ 
+ # Add this to a role.
+  # Role -> tasks -> main.yml
